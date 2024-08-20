@@ -20,11 +20,11 @@ a:hover {
 }
 
 /* Promo Container */
-.promo-container {
-  background: rgb(209, 233, 246);
+.promo-container { 
+  background: rgba(255, 224, 167, 0.675);
   background: linear-gradient(
       167deg,
-      rgba(209, 233, 246, 1) 0%,
+      rgba(247, 206, 162, 0.934) 0%, !important
       rgba(242, 242, 242, 1) 100%
   );
 }

@@ -89,7 +89,6 @@ $mysqli->close();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title>Product</title>
 </head>
@@ -97,8 +96,8 @@ $mysqli->close();
     <div class="container promo-container px-5 py-3 mt-4"> 
         <div class="row">
             <div class="col-md-8 d-flex-column align-self-center">
-                <h1>Best Possible Choice for You</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nobis, perspiciatis, distinctio ea iusto voluptate placeat sequi possimus officiis reiciendis commodi blanditiis et? Suscipit iure dolorum deleniti illo deserunt mollitia.</p>
+                <h1>Drive with Confidence—Quality Tires for Every Journey.</h1>
+                <p>Our tire products are meticulously engineered to deliver unparalleled performance, safety, and durability, ensuring a smooth, reliable, and confident driving experience in all weather conditions and on any type of road. </p>
                 <p class="lead">The piece standout for their contemporary lines and imposing presence</p>
             </div>
             <div class="col-md-4">
@@ -106,6 +105,191 @@ $mysqli->close();
             </div>
         </div>
     </div>
+
+    <style>
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.product-name,
+.product-price,
+.product-desc {
+  color: #121416; /* Color 3 */
+}
+
+/* Promo Container */
+.promo-container { 
+  background: rgba(255, 224, 167, 0.675);
+  background: linear-gradient(
+      167deg,
+      rgba(247, 206, 162, 0.934) 0%, !important
+      rgba(242, 242, 242, 1) 100%
+  );
+}
+
+.promo-container img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Category Button */
+.category-btn {
+  border: none;
+  background-color: #f7ccaf; /* Color 2 */ 
+  border-radius: 4px;
+  color: white;
+}
+
+/* Product Container */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  column-gap: 8px;
+  row-gap: 8px;
+}
+
+.product-container div {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background-color: #f4f4f3; /* Light gray color for the background */
+  transition: background-color 0.2s ease-in-out;        
+  cursor: pointer;
+}
+
+.product-container div:hover {
+  background-color: #eb742482; /* Color 2 */
+}
+
+/* Top Header */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #121416; /* Color 3 */
+  color: white; /* Text color set to white */
+}
+
+/* Dropdown Menu */
+.menu-toggle .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #121416; /* Color 3 */
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.menu-toggle:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0bc5b; /* Color 2 */
+}
+
+/* Main Navigation */
+.main-header {
+  background-color: #121416; /* Color 3 */
+  padding: 10px 0;
+}
+
+.main-header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.main-header nav ul li {
+  margin: 0 20px;
+}
+
+.main-header nav ul li a {
+  text-decoration: none;
+  color: white; /* Text color set to white */
+  font-size: 18px;
+  transition: color 0.3s, border-bottom 0.3s; /* Smooth transition for hover effects */
+  padding-bottom: 5px; /* Space for border effect */
+  border-bottom: 2px solid transparent; /* Bottom border effect */
+}
+
+.main-header nav ul li a:hover {
+  color: #eb7324; /* Color 2 */
+  border-bottom: 2px solid #eb7324; /* Border color on hover */
+}
+
+/* Category Sidebar */
+.categories {
+  background-color: #f4f4f4; /* Light gray background */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.categories h2 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.categories ul li {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+
+.categories ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0); /* Text color set to white */
+}
+
+.categories ul li a:hover {
+  text-decoration: underline;
+}
+
+.category-chip {
+  background-color: orange; /* Color 2 */
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 759px) {
+  .feature-product-container {
+      display: flex;
+  }
+  .categories {
+      margin-bottom: 8px;
+  }
+}
+
+    </style>
+
+
 
     <div class="feature-product-container container mt-4" id="container">
         <div class="row">
