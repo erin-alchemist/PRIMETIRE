@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Handle image uploads
     if (isset($_FILES['images']) && $_FILES['images']['error'][0] == UPLOAD_ERR_OK) {
-        $uploadDir = __DIR__ . '/uploads/';
+        $uploadDir = 'uploads/'; // Use relative path
         
         // Ensure the uploads directory exists
         if (!is_dir($uploadDir)) {
@@ -40,16 +40,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (empty($message)) {
             // Prepare SQL statement to insert product data
-            $stmt = $mysqli->prepare("INSERT INTO products (name, category, brand_id, description, stock, price) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $mysqli->prepare("INSERT INTO products (name, category, brand_id, stock, price) VALUES (?, ?, ?, ?, ?)");
 
             if ($stmt) {
                 // Bind parameters
-                $stmt->bind_param('ssiisi', $productName, $category, $brand, $description, $stock, $price);
+                $stmt->bind_param('ssiis', $productName, $category, $brand, $stock, $price);
 
                 // Execute the statement
                 if ($stmt->execute()) {
                     $productId = $stmt->insert_id;
                     $stmt->close();
+
+                    // Insert the description into the product_descriptions table
+                    $stmt = $mysqli->prepare("INSERT INTO product_descriptions (product_id, detailed_description) VALUES (?, ?)");
+
+                    if ($stmt) {
+                        $stmt->bind_param('is', $productId, $description);
+                        if ($stmt->execute()) {
+                            $stmt->close();
+                        } else {
+                            $message = "Failed to insert description: " . $stmt->error;
+                        }
+                    } else {
+                        $message = "Failed to prepare SQL statement for product_descriptions.";
+                    }
 
                     // Insert sizes into the product_sizes table
                     if (!empty($sizes)) {
@@ -66,17 +80,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         } else {
                             $message = "Failed to prepare SQL statement for product_sizes.";
                         }
-                    } else {
-                        $message = "No sizes selected.";
                     }
 
                     // Insert image paths into the product_images table
                     $stmt = $mysqli->prepare("INSERT INTO product_images (product_id, image_path) VALUES (?, ?)");
-                    
+
                     if ($stmt) {
                         foreach ($imagePaths as $path) {
                             $stmt->bind_param('is', $productId, $path);
-                            $stmt->execute();
+                            if (!$stmt->execute()) {
+                                $message = "Failed to insert image: " . $stmt->error;
+                                break;
+                            }
                         }
                         $stmt->close();
                         $message = "Product added successfully with images.";
@@ -84,10 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $message = "Failed to prepare image SQL statement.";
                     }
                 } else {
-                    $message = "Failed to add product.";
+                    $message = "Failed to add product: " . $stmt->error;
                 }
             } else {
-                $message = "Failed to prepare the SQL statement.";
+                $message = "Failed to prepare the SQL statement: " . $mysqli->error;
             }
         }
     } else {
@@ -98,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Fetch categories, sizes, and brands for dropdowns
 $categories = [];
 $sizes = [];
-$brands = []; // Initialize brands array
+$brands = [];
 
 try {
     // Fetch categories
@@ -128,6 +143,7 @@ try {
 // Close the database connection
 $mysqli->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

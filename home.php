@@ -170,38 +170,44 @@ $isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
     </section>
     <!-- Brand Slider Section -->
     <section class="brand-slider">
-        <h2>Our Brands</h2>
-        <div class="brand-slider-wrapper">
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 1">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 2">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 3">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 4">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 5">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 6">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 6">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 6">
-            </div>
-            <div class="brand">
-                <img src="https://via.placeholder.com/150x100" alt="Brand 6">
-            </div>
-            <!-- Add more brands as needed -->
-        </div>
-    </section>
+    <h2>Our Brands</h2>
+    <div class="brand-slider-wrapper">
+        <a href="https://www.tirebrand1.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/tire log.png" alt="Brand 1">
+        </a>
+        <a href="https://www.bfgoodrich.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/bf-goodrich-logo.png" alt="Brand 2">
+        </a>
+        <a href="https://www.bridgestone.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Bridgestone.png" alt="Brand 3">
+        </a>
+        <a href="https://www.continental.com/en/" class="brand" target="_blank">
+            <img src="images/Logo Brands/Continental.png" alt="Brand 4">
+        </a>
+        <a href="http://www.dunloptires.ph/?gclid=Cj0KCQjwt4a2BhD6ARIsALgH7Dp8paPZYocKjfdGd8Lo28-HJgkdwmsJelB-Y2sJ_5uzKQDuskE1EtEaAkJ7EALw_wcB" class="brand" target="_blank">
+            <img src="images/Logo Brands/Dunlop.png" alt="Brand 5">
+        </a>
+        <a href="https://www.firestone.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Firestone.png" alt="Brand 6">
+        </a>
+        <a href="https://www.goodyear.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Goodyear.png" alt="Brand 7">
+        </a>
+        <a href="https://www.michelin.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Michelin.png" alt="Brand 8">
+        </a>
+        <a href="https://www.tireshop.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/tire-shop-logo-.webp" alt="Brand 9">
+        </a>
+        <a href="https://www.apollo-tyres.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Apollo_dash.webp" alt="Brand 10">
+        </a>
+        <a href="https://www.goodyear.com" class="brand" target="_blank">
+            <img src="images/Logo Brands/Goodyearq.png" alt="Brand 11">
+        </a>
+    </div>
+</section>
+
     <!-- Blog Post Section -->
     <section class="blog-posts">
         <h2>Latest Blog Posts</h2>
@@ -270,7 +276,7 @@ $isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
             </div>
         </footer>
     
-    <script src="home.js"></script>
+    <script src="js\home.js"></script>
     <script>// home.js
 document.addEventListener('DOMContentLoaded', function () {
     const categoriesDropdown = document.querySelector('.categories-dropdown');

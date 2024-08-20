@@ -26,3 +26,20 @@ nextButton.addEventListener('click', nextSlide);
 prevButton.addEventListener('click', prevSlide);
 
 setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+// home.js
+document.addEventListener('DOMContentLoaded', function () {
+    const categoriesDropdown = document.querySelector('.categories-dropdown');
+    const dropdownContainer = categoriesDropdown.querySelector('.dropdown-container');
+    
+    categoriesDropdown.addEventListener('click', function () {
+        dropdownContainer.classList.toggle('show-dropdown');
+    });
+
+    // Optional: Close the dropdown if clicking outside of it
+    document.addEventListener('click', function (event) {
+        if (!categoriesDropdown.contains(event.target)) {
+            dropdownContainer.classList.remove('show-dropdown');
+        }
+    });
+});
